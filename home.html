@@ -2,13 +2,384 @@
 
 <html>
   <head>
-    <title>INSERT TITLE HERE!</title>
+    <title>AB Testing</title>
     <link rel="stylesheet" href="index.css">
-    <!-- TODO: add additional links here! e.g. fonts, icons, more stylesheets, etc. -->
+    <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="index.css">
     <meta content="width=device-width, initial-scale=1" name="viewport" />
   </head>
 
   <body>
-    <!-- TODO: put your HTML code here! -->
+    <a name="top"></a>
+    <nav class="navbar fixed-top navbar-expand-md navbar-light col-12" id="top-navbar">
+      <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#collapse_target" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="collapse_target">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item js-scroll-trigger">
+            <a style="text-decoration: none;" href="#hypothesis">Hypothesis</a>
+          </li>
+          <li class="nav-item js-scroll-trigger">
+            <a style="text-decoration: none;" href="#data">Data Wrangling</a>
+          </li>
+          <li class="nav-item js-scroll-trigger">
+            <a style="text-decoration: none;" href="#inference">Statistical Inference</a>
+          </li>
+          <li class="nav-item js-scroll-trigger">
+            <a style="text-decoration: none;" href="#conclusion">Conclusion</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class ="d-flex flex-column justify-content-center align-items-center top-pane anime">
+        <h1 class="text-dark text-center display-1" style="font-size:6vw; font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif">AB TESTING</h1>
+        <h2 class="text-dark text-center display-3" style="font-size:5vw; font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif">For a lovely plant shop UI</h2>
+    </div>
   </body>
 </html>
+
+<section id="hypothesis">
+  <div class="container">
+  <div class="row">
+      <div class="col-md-12 col-lg-12 col-sm-12 col-12 mx-auto">
+        <br><br><br>
+        <h2 class="text-dark text-center" style="font-size:4.5vw; font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif">Part 1: Creating Hypothesis</h2>
+        <div class="h-divider">
+          <div class="shadow"></div>
+          <div class="text2"><img src="https://t1.gstatic.com/images?q=tbn:ANd9GcQsmMfybMIwoE5etmOIAuvnFWdfv_8C1Bq15urJFqwhhI55FyYNP2YuUA" /></div>
+        </div>
+      </div>
+  </div>
+  <div class="d-flex flex-column justify-content-center align-items-center">
+    <br>
+    <h1 class="text-adjust" style="font-weight: light;">Introduction</h1>
+    <p style="font-size: larger;">
+      To enhance user experience and drive traffic, many websites conduct regular A/B tests to find out
+      which changes to the websites are valuable and are worth investing. Among its competitors, plant shop 
+      <a href="https://stormy-falls-32481.herokuapp.com/">cact-I + cact-you = cact-us</a> is developing a more user friendly UI and needs AB testing to see which 
+      version of the interface performs better.
+  </p>
+  <br>
+  <p style="font-size: larger; font-weight: bolder">
+    To achieve that, I designed version A and version B, which is demonstrated below:</p>
+  <p style="font-size: larger;">
+    Version A</p>
+  <div id="cartoon-image">
+    <img src="./image/versionA.png" alt="version A">
+  </div>
+  <p style="font-size: larger;">
+    Version B</p>
+  <div id="cartoon-image">
+    <img src="./image/versionB.png" alt="version B">
+  </div>
+  <p style="font-size: larger;"><i>The greatest difference between the two versions lies mainly in <b>font-size</b> and <b>text-hierarchy</b>.
+    Version B is designed as the controlled group while A adds some independent variables. A has larger font-size,
+    clearer text-hierarchy (price, description, and more information if user is interested) that are marked by differing
+    font-weight and font-size. By these independent variables, I make my hypothesis.
+  </i></p><br>
+</div>
+<hr><br>
+  <div class="d-flex flex-column justify-content-center align-items-center">
+    <h1 class="d-flex flex-column justify-content-center" style="font-weight: light;">Creating Hypothesis</h1>
+    <br>
+    <h2 class="text-adjust" style="font-weight: inherit;">Time to Completion</h2>
+    <br>
+  </div>
+  <div class="d-flex flex-column justify-content-center align-items-center small-pane">
+    <p class="text-adjust" style="font-size: larger;"><b>Null Hypothesis:</b> the time to completion wouldn't be much different with 
+      the price of the cactus is highlighted in bold-face and put in a more conspicuous location.</p>
+    <p class="text-adjust" style="font-size: larger;"><b>Alternative Hypothesis:</b> the time to completion would be shorter with the price of the cactus 
+      is highlighted in bold-face and put in a more conspicuous location. (time A < time B)</p>
+    <p class="text-adjust" style="font-size: larger;">
+    <b>Reasoning:</b> One of the major differences between the two versions is the highlight of prices of the 
+    cactuses in bold-face and heavier font-weight. In this case, it is expected that it takes shorter time to 
+    find the cactus that's at the price level that suits buyer's interest. Different cactuses in the highlighted 
+    price version are also contained in separate cards to show the contrast between different products. 
+    </p>
+  </div>
+  <br>
+  <div class="d-flex flex-column justify-content-center align-items-center">
+    <h2 class="text-adjust" style="font-weight: inherit;">Return Rate</h2>
+    <br>
+  </div>
+  <div class="d-flex flex-column small-pane2">
+    <p class="text-adjust" style="font-size: larger;"><b>Null Hypothesis:</b> A better text-hierarchy through different font-size 
+      wouldn't cause more users to return to the site.</p>
+    <p class="text-adjust" style="font-size: larger;"><b>Alternative Hypothesis:</b> More users would NOT return to the page when 
+      there is a better text-hierarchy in the shopping page.</p>
+    <p class="text-adjust" style="font-size: larger;">
+    <b>Reasoning:</b> I am trying to reject the null hypothesis and prove the alternative hypothesis.The reasoning 
+    that there will be more users who wouldn't return to the site when there's a better text-hierarchy is that, 
+    when the price tag has bigger font-size and different information fall under their own text-hierarchy, 
+    the sorted information will make it easier for users 
+    to estimate the total price and make their purchases without coming back and double checking the information. 
+    </p>
+  </div>
+  <br>
+</section>
+
+<section id="data">
+  <div class="container">
+  <div class="row">
+      <div class="col-md-12 col-lg-12 col-sm-12 col-12 mx-auto">
+        <br><br><br>
+        <h2 class="text-dark text-center" style="font-size:4.5vw; font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif">Part 2: Data Collection and Wrangling</h2>
+        <div class="h-divider">
+          <div class="shadow"></div>
+          <div class="text2"><img src="https://t1.gstatic.com/images?q=tbn:ANd9GcQsmMfybMIwoE5etmOIAuvnFWdfv_8C1Bq15urJFqwhhI55FyYNP2YuUA" /></div>
+        </div>
+      </div>
+  </div>
+  <br>
+  <div class="d-flex flex-column justify-content-center align-items-center">
+    <h1 class="text-adjust" style="font-weight: light;">Data Collection Process</h1>
+    <p style="font-size: larger;">
+      To collect data, I posted <a href="https://stormy-falls-32481.herokuapp.com/">my deployed Heroku link</a> to the studio spreadsheet for peer data collection. 
+      I also send the link to some friends and gave them instructions 
+      to gather data from users who are less familiar with the goal of the experiment. Please refer to Infographic for more detail on the 
+      user components of this experiment.
+    </p>
+    <br>
+    <h1 class="text-adjust" style="font-weight: light;">Note on Data Cleansing Process</h1>
+    <p style="font-size: larger;">
+      To clean the myfilteredlog.txt data, I transformed the txt file into a more readable csv file. I deleted the users 
+      who did not make any clicks and only opened the website. Due to Heroku's limitation on the lines of log it can keep track of,
+      I got rid of the initial data that are part of the previous user's record. Some users use the website multiple times in different tabs,
+      I recorded each instance of interaction with the interface as a separate data point to increase the sample size.
+      Time to Completion is calculated by subtracting timestamps (page load time - click time) between first opening the website and
+      closing the website. Number of returns is calculated by whether the user returned to the website or not, instead of how many times a user
+      returns to the site.
+    </p>
+    <br>
+  <div class="d-flex flex-column justify-content-center align-items-center">
+    <h2 class="text-adjust" style="font-weight: inherit;">Time to Completion Table</h2>
+    <br>
+  </div>
+  <table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">A</th>
+        <th scope="col">User ID</th>
+        <th scope="col">B</th>
+        <th scope="col">User ID</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">1</th>
+        <td>12851</td>
+        <td>cssksd</td>
+        <td>609258</td>
+        <td>cssksd</td>
+      </tr>
+      <tr>
+        <th scope="row">2</th>
+        <td>15300</td>
+        <td>cvygihxdcw</td>
+        <td>13511</td>
+        <td>ffzde</td>
+      </tr>
+      <tr>
+        <th scope="row">3</th>
+        <td>8666</td>
+        <td>hpypsrfal</td>
+        <td>6194</td>
+        <td>hpypsrfal</td>
+      </tr>
+      <tr>
+        <th scope="row">4</th>
+        <td>10200</td>
+        <td>nuoumvhh</td>
+        <td>15817</td>
+        <td>ojkutpqjf</td>
+      </tr>
+      <tr>
+        <th scope="row">5</th>
+        <td>6882</td>
+        <td>uvxsgiuo</td>
+        <td>76098</td>
+        <td>uikg</td>
+      </tr>
+      <tr>
+        <th scope="row">6</th>
+        <td>13089</td>
+        <td>vbjcrdgpo</td>
+        <td>16111</td>
+        <td>xafucmb</td>
+      </tr>
+      <tr>
+        <th scope="row">7</th>
+        <td>33030</td>
+        <td>xafucmb</td>
+        <td>15372</td>
+        <td>xafucmb</td>
+      </tr>
+      <tr>
+        <th scope="row">8</th>
+        <td>15238</td>
+        <td>xafucmb</td>
+        <td>11148</td>
+        <td>xafucmb</td>
+      </tr>
+      <tr>
+        <th scope="row">9</th>
+        <td>13889</td>
+        <td>xafucmb</td>
+        <td>9285</td>
+        <td>xafucmb</td>
+      </tr>
+      <tr>
+        <th scope="row">10</th>
+        <td>10385</td>
+        <td>xafucmb</td>
+        <td>21635</td>
+        <td>xafucmb</td>
+      </tr>
+      <tr>
+        <th scope="row">11</th>
+        <td>11015</td>
+        <td>xafucmb</td>
+        <td>--</td>
+        <td>--</td>
+      </tr>
+      <tr>
+        <th scope="row">12</th>
+        <td>9595</td>
+        <td>xafucmb</td>
+        <td>--</td>
+        <td>--</td>
+      </tr>
+      <tr>
+        <th scope="row">13</th>
+        <td>8797</td>
+        <td>xafucmb</td>
+        <td>--</td>
+        <td>--</td>
+      </tr>
+      <tr>
+        <th scope="row">14</th>
+        <td>20847</td>
+        <td>xafucmb</td>
+        <td>--</td>
+        <td>--</td>
+      </tr>
+      <tr>
+        <th scope="row">15</th>
+        <td>91042</td>
+        <td>yliadyn</td>
+        <td>--</td>
+        <td>--</td>
+      </tr>
+      <tr>
+        <th scope="row">16</th>
+        <td>118186</td>
+        <td>zkyemk</td>
+        <td>--</td>
+        <td>--</td>
+      </tr>
+    </tbody>
+  </table>
+  <p><i>*Note: Some users operated more than once on the site, some operated on different interfaces. To allow for more
+    data points for statistical inference purposes, a user operating multiple times are counted separately.
+  </i></p>
+  <div class="d-flex flex-column justify-content-center align-items-center">
+    <h2 class="text-adjust" style="font-weight: inherit;">Time to Completion Table</h2>
+    <br>
+  </div>
+  <table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">#Recorded</th>
+        <th scope="col">Return</th>
+        <th scope="col">No Return</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">A</th>
+        <td>14</td>
+        <td>2</td>
+      </tr>
+      <tr>
+        <th scope="row">B</th>
+        <td>10</td>
+        <td>0</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<section id="inference">
+  <div class="container">
+  <div class="row">
+      <div class="col-md-12 col-lg-12 col-sm-12 col-12 mx-auto">
+        <br><br><br>
+        <h2 class="text-dark text-center" style="font-size:4.5vw; font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif">Part 3: Statistical inference</h2>
+        <div class="h-divider">
+          <div class="shadow"></div>
+          <div class="text2"><img src="https://t1.gstatic.com/images?q=tbn:ANd9GcQsmMfybMIwoE5etmOIAuvnFWdfv_8C1Bq15urJFqwhhI55FyYNP2YuUA" /></div>
+        </div>
+      </div>
+  </div>
+  <br><br>
+  <div class="d-flex flex-column justify-content-center align-items-center">
+    <h1 class="text-adjust" style="font-weight: inherit;">Infographic</h1>
+    <br>
+    <div id="cartoon-image">
+      <img src="./image/A_B Testing Infographics.png" alt="infographic on stats inference">
+    </div>
+  </div>
+</section>
+
+<section id="conclusion">
+  <div class="container">
+  <div class="row">
+      <div class="col-md-12 col-lg-12 col-sm-12 col-12 mx-auto">
+        <br><br><br>
+        <h2 class="text-dark text-center" style="font-size:4.5vw; font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif">Part 4: Conclusion and Takeaways</h2>
+        <div class="h-divider">
+          <div class="shadow"></div>
+          <div class="text2"><img src="https://t1.gstatic.com/images?q=tbn:ANd9GcQsmMfybMIwoE5etmOIAuvnFWdfv_8C1Bq15urJFqwhhI55FyYNP2YuUA" /></div>
+        </div>
+      </div>
+  </div>
+  <br><br>
+  <div class="d-flex flex-column justify-content-center align-items-center small-pane3">
+    <p class="text-adjust" style="font-size: larger; font-weight: inherit;">
+      For time to completion, A performs much better than B. Since p-value is greater than alpha = 0.05, 
+      we can reject the null hypothesis. Thus, having a bold-face price tag can accelerate user's purchasing process 
+      and reduce the time for completion.
+    </p>
+    <p class="text-adjust" style="font-size: larger; font-weight: inherit;"> 
+      For the return rate, since p-value is greater than alpha = 0.05, we can reject the null hypothesis. 
+      Thus, having a clearer text-hierarchy can cause more users to not return to the shopping page. However, 
+      we do not know exactly the specific implication of a lower return rate, since due to the small sample size, 
+      it is also likely that some users did not make purchase or is not returning to the site anymore. 
+      The implication would be clearer if there is more data suggesting user behavior.
+    </p>
+    <p class="text-adjust" style="font-size: larger; font-weight: inherit;"> 
+      More broadly, AB Testing for this assignment really informs me the importance of having a larger sample size to get 
+      more accurate results. Apparently, the p-values for both t-test and chi2-test is relatively high compared to what could be 
+      with a larger sample size with users having different levels of familiarity with the website. It is also pretty interesting how changes
+      in minute details can actually change the user experience.
+    </p>
+    <p class="text-adjust" style="font-size: larger;">
+      Thank you for reading!  
+    </p>
+    <br>
+  </div>
+    <hr>
+        <div class="d-flex flex-column justify-content-center align-items-center">
+          <a href="#top" class="text-dark text-center" style="font-size: 24px; font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif">Back to top</a>
+          <br><br>
+        </div>
+  
+</section>
